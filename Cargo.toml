@@ -1,3 +1,21 @@
+[package]
+name = "ansr_nft"
+version = "0.1.0"
+authors = ["App2u <eugen@app2u.dev>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.61"
+near-sdk = "3.1.0"
+borsh = "0.7.1"
+hex = "0.4.2"
+wee_alloc = "0.4.5"
+near-contract-standards="3.2.0"
+
 [profile.release]
 codegen-units = 1
 # Tell `rustc` to optimize for small code size.
@@ -5,9 +23,5 @@ opt-level = "z"
 lto = true
 debug = false
 panic = "abort"
+# Opt into extra safety checks on arithmetic operations https://stackoverflow.com/a/64136471/249801
 overflow-checks = true
-
-[workspace]
-# remember to include a member for each contract
-members = ["nft"]
-exclude = ["integration-tests"]
